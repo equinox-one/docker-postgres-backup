@@ -1,0 +1,2 @@
+# Run the backups at 3am each night
+0 3 * * * root /backup.sh 2>&1
