@@ -1,4 +1,4 @@
-#Postgres Backup Docker Container
+# Postgres Backup Docker Container
 Docker container that helps to create postgress db backups and restore them.
 
 The default behaviour starts a cron that creates a backup every day executed at 3am.
@@ -25,4 +25,15 @@ services:
       - PGDATABASE=myapp_development  
 ```yml
 
+## Restore from backup
+There is an script to restore the database form a backup. *Be Careful!* it will delete existing database.
+You will need the app that uses the bd to be stopped (so we can delete and create database).
+
+docker-compose up db_backup
+docker-compose exec db_backup restore.sh PATH_TO_BACKUP
+
+The PATH_TO_BACKUP is inside the docker container.
+
+
+## Thanks to
 This docker is based on this one: https://github.com/kartoza/docker-pg-backup

@@ -7,7 +7,8 @@ PGDATABASE=
 
 if [ $# -gt 0 ]; then
 	psql -c "drop database ${MYPGDATABASE}"
-	pg_restore $1 --create -d postgres
+	psql -c "create database ${MYPGDATABASE}"
+	psql ${MYPGDATABASE} < $1
 else
-    echo "You need to indicate backup path"
+    echo "You need to indicate the path of the backup to restore"
 fi

@@ -18,5 +18,4 @@ echo "Backup running to $MYBACKUPDIR" >> /var/log/cron.log
 
 echo "Backing up $DB"  >> /var/log/cron.log
 FILENAME=${MYBACKUPDIR}/${DUMPPREFIX}${PGDATABASE}.${MYDATE}.dmp
-pg_dump -Fc -f ${FILENAME} -d ${PGDATABASE}
-# add -x?
+pg_dump -f ${FILENAME} -d ${PGDATABASE} -O
